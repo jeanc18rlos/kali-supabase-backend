@@ -1,5 +1,5 @@
 -- Users table
-CREATE TABLE IF NOT EXISTS users (
+CREATE TABLE IF NOT EXISTS user_profiles (
     user_id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     email VARCHAR(255) UNIQUE NOT NULL,
     timezone VARCHAR(50) NOT NULL,
@@ -10,12 +10,14 @@ CREATE TABLE IF NOT EXISTS users (
     profile_image_url TEXT,
     created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
 );
+
+
 --- End of Users table
 
 -- Steps table
 CREATE TABLE IF NOT EXISTS steps (
     steps_id SERIAL PRIMARY KEY,
-    user_id UUID REFERENCES users(user_id),
+    user_id UUID REFERENCES user_profiles(user_id),
     last_update DATE NOT NULL,
     step_count INT DEFAULT 0,
     created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
@@ -36,7 +38,7 @@ ALTER TABLE steps ADD CONSTRAINT unique_user_date UNIQUE (user_id, last_update);
 
 CREATE TABLE IF NOT EXISTS goals (
     goal_id SERIAL PRIMARY KEY,
-    user_id UUID REFERENCES users(user_id),
+    user_id UUID REFERENCES user_profiles(user_id),
     steps_goal INT,
     effective_date DATE NOT NULL,
     is_active BOOLEAN DEFAULT TRUE,
@@ -53,7 +55,7 @@ CREATE INDEX idx_goals_user_effective ON goals (user_id, effective_date);
 
 CREATE TABLE user_levels (
     level_id SERIAL PRIMARY KEY,
-    user_id UUID REFERENCES users(user_id),
+    user_id UUID REFERENCES user_profiles(user_id),
     current_level INT,
     current_points INT,
     points_to_next_level INT
@@ -65,7 +67,7 @@ CREATE TABLE user_levels (
 
 CREATE TABLE IF NOT EXISTS streaks (
     streak_id SERIAL PRIMARY KEY,
-    user_id UUID REFERENCES users(user_id),
+    user_id UUID REFERENCES user_profiles(user_id),
     current_streak INT DEFAULT 0,
     best_streak INT DEFAULT 0,
     last_update DATE NOT NULL
@@ -96,7 +98,7 @@ CREATE TABLE IF NOT EXISTS kali_subscriptions (
 
 CREATE TABLE IF NOT EXISTS subscriptions (
     subscription_id SERIAL PRIMARY KEY,
-    user_id UUID REFERENCES users(user_id),
+    user_id UUID REFERENCES user_profiles(user_id),
     kali_subscription_id INT REFERENCES kali_subscriptions(id),
     max_daily_steps INT
 );

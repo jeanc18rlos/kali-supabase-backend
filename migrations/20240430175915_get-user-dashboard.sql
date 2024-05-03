@@ -17,7 +17,7 @@ DECLARE
     _timezone TEXT;
 BEGIN
     -- Determining the effective timezone: parameter or user's default
-    SELECT dashboard_user_timezone INTO _timezone FROM users WHERE users.user_id = dashboard_user_id;
+    SELECT dashboard_user_timezone INTO _timezone FROM user_profiles WHERE user_profiles.user_id = dashboard_user_id;
 
     RETURN QUERY
     SELECT
@@ -47,7 +47,7 @@ BEGIN
          (SELECT MAX(last_step.last_update) FROM steps last_step  WHERE last_step.user_id = dashboard_user_id) AS last_update
      
     FROM
-        users u
+        user_profiles u
         LEFT JOIN steps s ON u.user_id = s.user_id AND s.last_update = (now() AT TIME ZONE _timezone)::date
         LEFT JOIN user_levels ul ON u.user_id = ul.user_id
         LEFT JOIN streaks st ON u.user_id = st.user_id

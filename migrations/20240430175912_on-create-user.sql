@@ -12,16 +12,16 @@ BEGIN
 
     -- Get initial level details from kali_levels
     SELECT id, step_count_to_next_level INTO _initial_level, _initial_points_to_next_level 
-    FROM kali_levels 
+    FROM public.kali_levels 
     WHERE id = 1;  -- Assuming id=1 is your starting level
 
     -- Get initial subscription details from kali_subscriptions
     SELECT id, daily_points_limit INTO _initial_subscription_id, _initial_max_daily_steps 
-    FROM kali_subscriptions 
+    FROM public.kali_subscriptions 
     WHERE id = 1;  -- Assuming id=1 is your starting subscription
 
     -- Insert initial level and points data for the new user
-    INSERT INTO user_levels (
+    INSERT INTO public.user_levels (
         user_id,
         current_level,
         current_points,
@@ -35,7 +35,7 @@ BEGIN
     );
 
     -- Insert initial streak data for the new user with timezone-adjusted date
-    INSERT INTO streaks (
+    INSERT INTO public.streaks (
         user_id,
         current_streak,
         best_streak,
@@ -49,7 +49,7 @@ BEGIN
     );
 
     -- Initialize a default subscription for the new user
-    INSERT INTO subscriptions (
+    INSERT INTO public.subscriptions (
         user_id,
         max_daily_steps,
         kali_subscription_id
@@ -69,7 +69,7 @@ $$ LANGUAGE plpgsql;
 -- Create a trigger to set initial data for a new user after creation in the users table
 
 CREATE TRIGGER trigger_after_user_creation
-AFTER INSERT ON users
+AFTER INSERT ON public.user_profiles
 FOR EACH ROW
 EXECUTE FUNCTION set_initial_user_data();
 
