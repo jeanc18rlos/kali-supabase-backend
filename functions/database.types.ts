@@ -34,6 +34,35 @@ export type Database = {
   }
   public: {
     Tables: {
+      bonus_redemptions: {
+        Row: {
+          bonus_amount: number
+          redemption_date: string
+          redemption_id: number
+          user_id: string
+        }
+        Insert: {
+          bonus_amount: number
+          redemption_date: string
+          redemption_id?: number
+          user_id: string
+        }
+        Update: {
+          bonus_amount?: number
+          redemption_date?: string
+          redemption_id?: number
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "fk_user"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "user_profiles"
+            referencedColumns: ["user_id"]
+          },
+        ]
+      }
       goals: {
         Row: {
           effective_date: string
@@ -284,6 +313,21 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      get_leaderboard: {
+        Args: {
+          _user_id: string
+          _timezone: string
+          _period: string
+          _limit?: number
+        }
+        Returns: {
+          user_position: number
+          user_profile_image: string
+          name: string
+          steps: number
+          is_current_user: boolean
+        }[]
+      }
       get_user_dashboard: {
         Args: {
           dashboard_user_id: string
@@ -301,6 +345,31 @@ export type Database = {
           current_streak: number
           weekly_streak: string[]
           last_update: string
+        }[]
+      }
+      get_user_future_levels: {
+        Args: {
+          _user_id: string
+          _timezone: string
+          _limit?: number
+        }
+        Returns: {
+          id: number
+          level_name: string
+          image_url: string
+          motivational_quote: string
+          reward: number
+          step_count_to_next_level: number
+        }[]
+      }
+      redeem_daily_bonus: {
+        Args: {
+          _user_id: string
+          _timezone: string
+        }
+        Returns: {
+          status: string
+          message: string
         }[]
       }
       set_daily_goal: {

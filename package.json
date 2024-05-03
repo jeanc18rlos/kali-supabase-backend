@@ -1,0 +1,14 @@
+{
+  "name": "supabase",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "gen-types": "npx supabase gen types typescript --local > functions/database.types.ts"
+  },
+  "author": "",
+  "license": "ISC"
+}
