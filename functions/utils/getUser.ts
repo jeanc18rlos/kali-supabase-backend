@@ -5,9 +5,9 @@ import { NotFoundError } from "./errors.ts";
 
 async function getUser(
   supabase: SupabaseClient<Database>,
-  headers: Headers
+  headers: Headers,
 ): Promise<
-  | { error: boolean; data: { user_id: string } }
+  | { error: boolean; data: { user_id: string; timezone: string } }
   | { error: boolean; data: Response }
 > {
   const { data } = await supabase.auth.getUser();
@@ -21,10 +21,22 @@ async function getUser(
     };
   }
 
-  const { id } = user;
+  const {
+    id,
+    user_metadata: {
+      timezone,
+    },
+  } = user;
+
+  if (!timezone) {
+    return {
+      error: true,
+      data: NotFoundError("User timezone not found", headers),
+    };
+  }
   return {
     error: false,
-    data: { user_id: id },
+    data: { user_id: id, timezone },
   };
 }
 

@@ -40,13 +40,12 @@ Deno.serve(async (req) => {
       return validationResult as Response;
     }
 
-    const { name, profile_image, bio, birth_date } =
-      validationResult as {
-        name?: string;
-        profile_image?: string;
-        bio?: string;
-        birth_date?: string;
-      };
+    const { name, profile_image, bio, birth_date } = validationResult as {
+      name?: string;
+      profile_image?: string;
+      bio?: string;
+      birth_date?: string;
+    };
 
     const { error: user_profile_error } = await supabase
       .from("user_profiles")

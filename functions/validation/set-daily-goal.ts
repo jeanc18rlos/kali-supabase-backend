@@ -3,18 +3,17 @@ import { BadRequestError } from "../utils/errors.ts";
 type ReturnType =
   | { error: boolean; data: Response }
   | {
-      error: boolean;
-      data: {
-        goal: number;
-        timeZone: string;
-      };
+    error: boolean;
+    data: {
+      goal: number;
     };
+  };
 
 async function setDailyGoal(
   req: Request,
-  headers: Headers
+  headers: Headers,
 ): Promise<ReturnType> {
-  const { goal, timeZone } = await req.json();
+  const { goal } = await req.json();
 
   if (!goal) {
     return {
@@ -37,23 +36,9 @@ async function setDailyGoal(
     };
   }
 
-  if (!timeZone) {
-    return {
-      error: true,
-      data: BadRequestError("Timezone is required", headers),
-    };
-  }
-
-  if (typeof timeZone !== "string") {
-    return {
-      error: true,
-      data: BadRequestError("Timezone must be a string", headers),
-    };
-  }
-
   return {
     error: false,
-    data: { goal, timeZone },
+    data: { goal },
   };
 }
 export default setDailyGoal;

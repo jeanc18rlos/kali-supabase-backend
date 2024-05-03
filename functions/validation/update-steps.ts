@@ -3,18 +3,17 @@ import { BadRequestError } from "../utils/errors.ts";
 type ReturnType =
   | { error: boolean; data: Response }
   | {
-      error: boolean;
-      data: {
-        steps: number;
-        timeZone: string;
-      };
+    error: boolean;
+    data: {
+      steps: number;
     };
+  };
 
 async function updateUserSteps(
   req: Request,
-  headers: Headers
+  headers: Headers,
 ): Promise<ReturnType> {
-  const { steps, timeZone } = await req.json();
+  const { steps } = await req.json();
 
   if (!steps) {
     return {
@@ -36,32 +35,11 @@ async function updateUserSteps(
       data: BadRequestError("steps must be a positive number", headers),
     };
   }
-  if (!timeZone) {
-    return {
-      error: true,
-      data: BadRequestError("timeZone is required", headers),
-    };
-  }
-
-  if (timeZone && typeof timeZone !== "string") {
-    return {
-      error: true,
-      data: BadRequestError("timeZone must be a string", headers),
-    };
-  }
-
-  if (timeZone && typeof timeZone !== "string") {
-    return {
-      error: true,
-      data: BadRequestError("timeZone must be a string", headers),
-    };
-  }
 
   return {
     error: false,
     data: {
       steps,
-      timeZone,
     },
   };
 }
