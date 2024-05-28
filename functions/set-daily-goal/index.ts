@@ -21,7 +21,7 @@ Deno.serve(async (req) => {
 
   const { error: validationError, data: validationResult } = await setDailyGoal(
     req,
-    headers,
+    headers
   );
 
   if (validationError) {
@@ -49,23 +49,17 @@ Deno.serve(async (req) => {
       timezone: string;
     };
 
-    const { error: updateGoalError } = await supabase.rpc(
-      "set_daily_goal",
-      {
-        _user_id: user_id,
-        _user_timezone: timezone,
-        _goal: goal,
-      },
-    );
+    const { error: updateGoalError } = await supabase.rpc("set_daily_goal", {
+      _user_id: user_id,
+      _user_timezone: timezone,
+      _goal: goal,
+    });
 
     if (updateGoalError) {
       return InternalServerError(updateGoalError.message, headers);
     }
 
-    return createdResponse(
-      {},
-      headers,
-    );
+    return createdResponse({}, headers);
   } catch (error) {
     return InternalServerError(error.message, headers);
   }

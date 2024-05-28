@@ -41,7 +41,7 @@ Deno.serve(async (req) => {
       {
         dashboard_user_id: user_id,
         dashboard_user_timezone: timezone,
-      },
+      }
     );
 
     if (dasboardError) {
@@ -79,7 +79,7 @@ Deno.serve(async (req) => {
         weekly_streak,
         last_update,
       },
-      headers,
+      headers
     );
   } catch (error) {
     return InternalServerError(error.message, headers);

@@ -17,13 +17,7 @@ async function updateUserProfile(
   req: Request,
   headers: Headers
 ): Promise<ReturnType> {
-  const { 
-    email,
-    name,
-    profile_image,
-    bio,
-    birth_date,
-  } = await req.json();
+  const { email, name, profile_image, bio, birth_date } = await req.json();
 
   if (!email && !name && !profile_image && !bio && !birth_date) {
     return {
@@ -46,7 +40,6 @@ async function updateUserProfile(
     };
   }
 
-
   if (profile_image && typeof profile_image !== "string") {
     return {
       error: true,
@@ -67,7 +60,7 @@ async function updateUserProfile(
       data: BadRequestError("birth_date must be a string", headers),
     };
   }
-  
+
   return {
     error: false,
     data: {

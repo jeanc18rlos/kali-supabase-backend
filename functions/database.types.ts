@@ -403,6 +403,187 @@ export type Database = {
       [_ in never]: never
     }
   }
+  shop: {
+    Tables: {
+      founders_profiles: {
+        Row: {
+          created_at: string
+          email: string
+          name: string
+          phone_number: string | null
+          role: string
+          shopify_url: string | null
+          stripe_account: string | null
+          surename: string | null
+          updated_at: string | null
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          name: string
+          phone_number?: string | null
+          role: string
+          shopify_url?: string | null
+          stripe_account?: string | null
+          surename?: string | null
+          updated_at?: string | null
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          name?: string
+          phone_number?: string | null
+          role?: string
+          shopify_url?: string | null
+          stripe_account?: string | null
+          surename?: string | null
+          updated_at?: string | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "fk_auth_users_id"
+            columns: ["user_id"]
+            isOneToOne: true
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      founders_shops: {
+        Row: {
+          created_at: string
+          role: string
+          shop_id: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          role?: string
+          shop_id?: string
+          user_id?: string
+        }
+        Update: {
+          created_at?: string
+          role?: string
+          shop_id?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "fk_founders_shops_shop_id"
+            columns: ["shop_id"]
+            isOneToOne: false
+            referencedRelation: "shops_profile"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "fk_founders_shops_user_id"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      shopify_products: {
+        Row: {
+          base_price: number | null
+          created_at: string
+          description: string | null
+          extra_data: Json | null
+          id: string
+          name: string
+          reference_url: string
+          shop_id: string
+          updated_at: string | null
+        }
+        Insert: {
+          base_price?: number | null
+          created_at?: string
+          description?: string | null
+          extra_data?: Json | null
+          id?: string
+          name: string
+          reference_url: string
+          shop_id: string
+          updated_at?: string | null
+        }
+        Update: {
+          base_price?: number | null
+          created_at?: string
+          description?: string | null
+          extra_data?: Json | null
+          id?: string
+          name?: string
+          reference_url?: string
+          shop_id?: string
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "fk_shopify_products_shop_id"
+            columns: ["shop_id"]
+            isOneToOne: false
+            referencedRelation: "shops_profile"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      shops_profile: {
+        Row: {
+          created_at: string
+          id: string
+          name: string
+          shop_url: string | null
+          stripe_account: string | null
+          stripe_account_status: string | null
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          name: string
+          shop_url?: string | null
+          stripe_account?: string | null
+          stripe_account_status?: string | null
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          name?: string
+          shop_url?: string | null
+          stripe_account?: string | null
+          stripe_account_status?: string | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "fk_shop_profile_user_id"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+    }
+    Views: {
+      [_ in never]: never
+    }
+    Functions: {
+      [_ in never]: never
+    }
+    Enums: {
+      [_ in never]: never
+    }
+    CompositeTypes: {
+      [_ in never]: never
+    }
+  }
   storage: {
     Tables: {
       buckets: {

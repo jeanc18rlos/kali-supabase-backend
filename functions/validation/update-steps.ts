@@ -3,15 +3,15 @@ import { BadRequestError } from "../utils/errors.ts";
 type ReturnType =
   | { error: boolean; data: Response }
   | {
-    error: boolean;
-    data: {
-      steps: number;
+      error: boolean;
+      data: {
+        steps: number;
+      };
     };
-  };
 
 async function updateUserSteps(
   req: Request,
-  headers: Headers,
+  headers: Headers
 ): Promise<ReturnType> {
   const { steps } = await req.json();
 
