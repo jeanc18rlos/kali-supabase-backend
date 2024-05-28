@@ -74,7 +74,12 @@
   
   
 ## Architecture diagram
-![](./docs/kali-backend-architecture.drawio.svg)  
+![](./docs/images/Architecture/kali-backend-architecture.drawio.svg)  
 
  ## Database ER diagram
-![]()  
+
+ ### App Schema
+![](./docs/images/DB/kali%20DB-%20app%20schema.png)  
+
+ ### Shop Schema
+ ![](./docs/images/DB/Kali%20DB%20-%20shop%20schema.png)
