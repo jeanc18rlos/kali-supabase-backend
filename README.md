@@ -43,6 +43,8 @@
   ## Supabase Install
   
   ### Installation docs
+  
+  * https://supabase.com/docs/guides/cli/getting-started?queryGroups=platform&platform=linux
 
   ### By npm, prepare local directory
 
