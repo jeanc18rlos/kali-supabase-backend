@@ -1,48 +1,31 @@
 # Kali Backend Project 📝
 
-This project manage:
+# Kali Backend Project 📝  
 
-- Kali Mobile App business logic
-- Kali Founders business logic
+This project includes:
 
-## APP 🚀
+* Kali Mobile App business logic
+* Kali Founders business logic
+  
+## Kali Mobile App  🚀  
 
-To get started, hit the 'clear' button at the top of the editor!
+To get started, hit the 'clear' button at the top of the editor!  
 
-## Prebuilt Components/Templates 🔥
+* user steps track
+* Points Calculation
+* shopping cart
+  * Buy products
 
-You can checkout prebuilt components and templates by clicking on the 'Add Section' button or menu icon
-on the top left corner of the navbar.
-
-## Save Readme ✨
-
-Once you're done, click on the save button to download and save your ReadMe!
-
-# Kali Backend Project 📝
-
-This project manage:
-
-- Kali Mobile App business logic
-- Kali Founders business logic
-
-## Kali Mobile App 🚀
-
-To get started, hit the 'clear' button at the top of the editor!
-
-- user steps track
-- Points Calculation
-- shoping cart
-  - Buy products
 
 ## Kali Founders
 
-- Founder Management
-- Shops management
-- Products management
-  - Register/Enable/Desable products to sale
-  - Product Inventory Updates
-  - Purchase Order
-    - Products checkout
+* Founder Management
+  * Shops management
+  * Products management
+    * Register/Enable/Desable products to sale
+    * Product Inventory Updates
+    * Purchase Order
+      * Products checkout
 
 # Local development 🔥
 
@@ -50,58 +33,53 @@ To get started, hit the 'clear' button at the top of the editor!
 
 ### Installation docs
 
-- https://supabase.com/docs/guides/cli/getting-started?queryGroups=platform&platform=linux
+[https://supabase.com/docs/guides/cli/getting-started?queryGroups=platform&platform=linux](https://supabase.com/docs/guides/cli/getting-started?queryGroups=platform&platform=linux)
 
-### By npm, prepare local directory
+### Dev environment setup
 
-```
- mkdir kali_backend
- npm init
- npm i supabase --save-dev
- mkdir supabase
-```
+  If using [nvm](https://github.com/nvm-sh/nvm), make sure to use the correct node version.
+  You'll also need to install [Docker desktop](https://www.docker.com/products/docker-desktop/) to run the local Supabase instance.
 
-### Repository clone
+  ```sh
+  nvm use
+  ```
+  
+  Then clone the repository and install the dependencies.
+  
+  ```sh
+  git clone git@github.com:jeanc18rlos/kali-supabase-backend.git
+  npm i # or npm install, install dependencies
+  npx supabase start
+  ```
 
-```
- cd supabase
- git clone git@github.com:jeanc18rlos/kali-supabase-backend.git
-```
+  To view local supabase instance info:
+  
+  ```sh
+  npx supabase status
+  ```
 
-### Start project
+  To stop the supabase instance:
 
-```
- ./node_modules/.bin/supabase start
-```
+  ```sh
+  npx supabase stop
+  ```
 
 ### Open Supabase Studio (Web Admin)
 
-```
-  http://localhost:54323
-```
-
-### Serve Edge functions
-
-```
-  supabase serve
-```
-
-### Deno
-
-Install Deno for VScode development
-
-https://deno.com/
+  ```sh
+    http://localhost:54323
+  ```
 
 ## Architecture diagram
 
-![](./docs/images/Architecture/kali-backend-architecture.drawio.svg)
+![backend architecture](./docs/images/Architecture/kali-backend-architecture.drawio.svg)  
 
 ## Database ER diagram
 
 ### App Schema
 
-![](./docs/images/DB/kali%20DB-%20app%20schema.png)
+![app schema](./docs/images/DB/kali%20DB-%20app%20schema.png)  
 
 ### Shop Schema
 
-![](./docs/images/DB/Kali%20DB%20-%20shop%20schema.png)
+![shop schema](./docs/images/DB/Kali%20DB%20-%20shop%20schema.png)
