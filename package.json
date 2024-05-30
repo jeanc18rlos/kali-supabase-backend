@@ -10,5 +10,8 @@
     "gen-types": "npx supabase gen types typescript --local > functions/database.types.ts"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "supabase": "^1.169.8"
+  }
 }
