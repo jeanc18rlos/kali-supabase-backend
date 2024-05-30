@@ -21,5 +21,6 @@
   },
   "postgres-hacker.enable": true,
   "postgres-hacker.pgindent.path": "src/tools/pgindent/pgindent",
-  "postgres-hacker.pgindent.indent": "build/src/tools/pg_bsd_indent/pg_bsd_indent"
+  "postgres-hacker.pgindent.indent": "build/src/tools/pg_bsd_indent/pg_bsd_indent",
+  "cSpell.words": ["supabase"]
 }

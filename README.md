@@ -37,14 +37,13 @@ To get started, hit the 'clear' button at the top of the editor!
 
 ### Dev environment setup
 
-  If using [nvm](https://github.com/nvm-sh/nvm), make sure to use the correct node version.
-  You'll also need to install [Docker desktop](https://www.docker.com/products/docker-desktop/) to run the local Supabase instance.
-
+  _Recommended_: Use [nvm](https://github.com/nvm-sh/nvm) to manage node versions. After installing, use the following command:
+  
   ```sh
   nvm use
   ```
-  
-  Then clone the repository and install the dependencies.
+
+  You'll also need to install [Docker desktop](https://www.docker.com/products/docker-desktop/) to run the local Supabase instance. After installing, start the Docker desktop application. Then clone the repository and install the dependencies.
   
   ```sh
   git clone git@github.com:jeanc18rlos/kali-supabase-backend.git
