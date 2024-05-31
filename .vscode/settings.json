@@ -1,0 +1,25 @@
+{
+  "deno.enablePaths": ["supabase/functions"],
+  "deno.lint": true,
+  "deno.unstable": true,
+  "[typescript]": {
+    "editor.defaultFormatter": "denoland.vscode-deno"
+  },
+  "workbench.colorCustomizations": {
+    "activityBar.background": "#08342C",
+    "titleBar.activeBackground": "#0B493D",
+    "titleBar.activeForeground": "#F2FDFB"
+  },
+
+  "[c]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "tristan957.postgres-hacker"
+  },
+
+  "files.associations": {
+    "*.sql": "sql"
+  },
+  "postgres-hacker.enable": true,
+  "postgres-hacker.pgindent.path": "src/tools/pgindent/pgindent",
+  "postgres-hacker.pgindent.indent": "build/src/tools/pg_bsd_indent/pg_bsd_indent"
+}
