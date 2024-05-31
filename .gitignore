@@ -7,6 +7,6 @@ yarn-debug.log*
 yarn-error.log*
 coverage/
 # Supabase
-.branches
-.temp
-.env
+**/.branches
+**/.temp
+**/.env
