@@ -1,8 +1,10 @@
 {
 	"info": {
-		"_postman_id": "6e916659-ecf7-4405-854a-71884ab13ff5",
+		"_postman_id": "b1111f24-33e6-4c1b-a460-a138c8b86ce5",
 		"name": "Kali DEV",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5908262",
+		"_collection_link": "https://martian-meadow-487343.postman.co/workspace/Kali~8c6a2936-db0d-4f36-89ec-feabf8a90729/collection/5908262-b1111f24-33e6-4c1b-a460-a138c8b86ce5?action=share&source=collection_link&creator=5908262"
 	},
 	"item": [
 		{
@@ -42,12 +44,9 @@
 					"raw": "{\n     \"email\": \"4ss3jE3dDdSDW3sDHseone@email.com\"\n}"
 				},
 				"url": {
-					"raw": "https://mqaounamjeyswaphhdwq.supabase.co/functions/v1/check-email",
-					"protocol": "https",
+					"raw": "{{SERVER_URL}}/functions/v1/check-email",
 					"host": [
-						"mqaounamjeyswaphhdwq",
-						"supabase",
-						"co"
+						"{{SERVER_URL}}"
 					],
 					"path": [
 						"functions",
@@ -1161,7 +1160,8 @@
 							"}",
 							""
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
@@ -1179,7 +1179,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"email\": \"4ss3jE3dDdSDW3sDHseone@email.com\",\n  \"password\": \"UubsnDEdAsrXrtWxkTPXz\",\n  \"data\": {\n      \"timezone\": \"America/Caracas\"\n  }\n}"
+					"raw": "{\n  \"email\": \"allennikka@email.com\",\n  \"password\": \"iamallen\",\n  \"data\": {\n      \"timezone\": \"America/Caracas\"\n  }\n}"
 				},
 				"url": {
 					"raw": "{{SERVER_URL}}/auth/v1/signup",
@@ -1549,14 +1549,14 @@
 			"type": "default"
 		},
 		{
-			"key": "SERVER_URL",
-			"value": "https://mqaounamjeyswaphhdwq.supabase.co",
-			"type": "default"
-		},
-		{
 			"key": "API_KEY",
 			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFoenZzZ2ZnZWVuaXJicWpvbnJrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTQ0OTkzMjQsImV4cCI6MjAzMDA3NTMyNH0.ygBTZCbSil5mddamE3WWA1CQIs2qGaaVcC6Ex35WBjM",
 			"type": "default"
+		},
+		{
+			"key": "SERVER_URL",
+			"value": "http://127.0.0.1:54321",
+			"type": "string"
 		}
 	]
 }
